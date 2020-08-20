@@ -317,9 +317,6 @@ procedure TForm1.FormResize(Sender: TObject);
 begin
   Bevel2.Width := (Form1.Width div 2) - 6;
   Bevel3.Width := Bevel2.Width;
-  Bevel4.Left := (Form1.Width div 2) - 114;
-  Bevel8.Left := Bevel4.Left;
-  Bevel12.Left := Bevel4.Left;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
