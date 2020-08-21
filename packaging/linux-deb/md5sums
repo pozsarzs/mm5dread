@@ -1,4 +1,8 @@
-fe59c80a8e3ee679e158d9f519099be1  usr/bin/mm5dread
+39d8a1845650497d84e67b77cc33314b  DEBIAN/control
+f61af31fdeb574d6b9f349d21097bd50  DEBIAN/md5sums
+b51e03618fea08f556ece35cc1fac4df  DEBIAN/postinst
+25d444cd3cba4b03c11c453341c3ec02  DEBIAN/prerm
+0ade072d087c501204ad7552068bbd97  usr/bin/mm5dread
 5f29e9e71c009e35105c0e31aa6c9658  usr/share/applications/mm5dread.desktop
 4994f4cacf022e01ffda29f5627f7ab5  usr/share/doc/mm5dread/AUTHORS
 c8fb9e658b6ad2a4084068e005ae214d  usr/share/doc/mm5dread/changelog.Debian.gz
