@@ -29,7 +29,7 @@
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_RUN "$INSTDIR\mm5dread.exe"
-!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\documents\readme.txt"
+!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\documents\README"
 !insertmacro MUI_PAGE_FINISH
 
 ; Uninstaller pages
@@ -43,8 +43,8 @@
 !insertmacro MUI_LANGUAGE "Hungarian"
 
 ; License Language
-LicenseLangString MUILicense ${LANG_ENGLISH} "mm5dread\licence.txt"
-LicenseLangString MUILicense ${LANG_HUNGARIAN} "mm5dread\licence.txt"
+LicenseLangString MUILicense ${LANG_ENGLISH} "mm5dread\LICENCE"
+LicenseLangString MUILicense ${LANG_HUNGARIAN} "mm5dread\LICENCE"
 
 ; MUI end ------
 
@@ -62,14 +62,14 @@ FunctionEnd
 Section "Main files" SEC01
   SetOutPath "$INSTDIR\documents"
   SetOverwrite try
-  File "mm5dread\documents\authors.txt"
-  File "mm5dread\documents\install.txt"
-  File "mm5dread\documents\readme.txt"
-  File "mm5dread\documents\version.txt"
+  File "mm5dread\documents\authors"
+  File "mm5dread\documents\install"
+  File "mm5dread\documents\readme"
+  File "mm5dread\documents\version"
   SetOutPath "$INSTDIR"
   File "mm5dread\mm5dread.exe"
-  File "mm5dread\licence.txt"
-  File "mm5dread\readme.txt"
+  File "mm5dread\licence"
+  File "mm5dread\readme.md"
   CreateShortCut "$DESKTOP\MM5DRead.lnk" "$INSTDIR\mm5dread.exe"
   CreateDirectory "$SMPROGRAMS\MM5DRead"
   CreateShortCut "$SMPROGRAMS\MM5DRead\MM5DRead.lnk" "$INSTDIR\mm5dread.exe"
@@ -117,16 +117,16 @@ SectionEnd
 
 Section Uninstall
   Delete "$INSTDIR\uninst.exe"
-  Delete "$INSTDIR\readme.txt"
-  Delete "$INSTDIR\licence.txt"
+  Delete "$INSTDIR\readme.md"
+  Delete "$INSTDIR\licence"
   Delete "$INSTDIR\mm5dread.exe"
   Delete "$INSTDIR\languages\mm5dread.pot"
   Delete "$INSTDIR\languages\hu\mm5dread.po"
   Delete "$INSTDIR\languages\hu\mm5dread.mo"
-  Delete "$INSTDIR\documents\authors.txt"
-  Delete "$INSTDIR\documents\install.txt"
-  Delete "$INSTDIR\documents\readme.txt"
-  Delete "$INSTDIR\documents\version.txt"
+  Delete "$INSTDIR\documents\authors"
+  Delete "$INSTDIR\documents\install"
+  Delete "$INSTDIR\documents\readme"
+  Delete "$INSTDIR\documents\version"
 
   Delete "$SMPROGRAMS\MM5DRead\Uninstall.lnk"
   Delete "$DESKTOP\MM5DRead.lnk"

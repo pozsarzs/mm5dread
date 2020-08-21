@@ -108,6 +108,7 @@ implementation
 // read data from device
 procedure TForm1.SpeedButton1Click(Sender: TObject);
 var
+  format: TFormatSettings;
   good: boolean;
   ledoff, ledon: TColor;
   t, rh: single;
@@ -120,9 +121,11 @@ begin
     else
       good := True;
   if good then
-    good := trystrtofloat(value3.Strings[2], t);
-  if good then
-    good := trystrtofloat(value3.Strings[3], rh);
+    begin
+      format.DecimalSeparator:='.';
+      trystrtofloat(value3.Strings[2], t, format);
+      trystrtofloat(value3.Strings[3], rh, format);
+    end;
   if not good then
   begin
     // displays
