@@ -5,7 +5,7 @@
 # | Global makefile for Unix-like systems                                      |
 # +----------------------------------------------------------------------------+
 
-name		= mm3dread
+name		= mm5dread
 version		= @version@
 architecture	= @architecture@
 os              = @os@
