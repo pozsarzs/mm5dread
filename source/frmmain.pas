@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | MM5DRead v0.1 * Status reader program for MM5D device                    | }
-{ | Copyright (C) 2020 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>          | }
+{ | MM5DRead v0.2 * Status reader program for MM5D device                    | }
+{ | Copyright (C) 2020-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | frmmain.pas                                                              | }
 { | Main form                                                                | }
 { +--------------------------------------------------------------------------+ }
@@ -121,11 +121,11 @@ begin
     else
       good := True;
   if good then
-    begin
-      format.DecimalSeparator:='.';
-      trystrtofloat(value3.Strings[2], t, format);
-      trystrtofloat(value3.Strings[3], rh, format);
-    end;
+  begin
+    format.DecimalSeparator := '.';
+    trystrtofloat(value3.Strings[2], t, format);
+    trystrtofloat(value3.Strings[3], rh, format);
+  end;
   if not good then
   begin
     // displays
@@ -147,7 +147,7 @@ begin
     Shape12.Brush.Color := ledoff;
     Shape13.Brush.Color := ledoff;
     Shape14.Brush.Color := ledoff;
-    // Status bar
+    // status bar
     StatusBar1.Panels.Items[0].Text := '';
     StatusBar1.Panels.Items[1].Text := '';
     Form1.Caption := APPNAME + ' v' + VERSION;
@@ -221,7 +221,7 @@ begin
       Shape14.Brush.Color := ledon
     else
       Shape14.Brush.Color := ledoff;
-    // Status bar
+    // status bar
     StatusBar1.Panels.Items[0].Text := value0.Strings[0] + ' ' + value0.Strings[1];
     StatusBar1.Panels.Items[1].Text := value3.Strings[0] + ' ' + value3.Strings[1];
     Form1.Caption := APPNAME + ' v' + VERSION + ' | ' + value1.Strings[3];

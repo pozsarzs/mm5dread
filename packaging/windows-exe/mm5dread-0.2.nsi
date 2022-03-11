@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "MM5DRead"
-!define PRODUCT_VERSION "0.1"
+!define PRODUCT_VERSION "0.2"
 !define PRODUCT_PUBLISHER "Pozsar Zsolt"
 !define PRODUCT_WEB_SITE "http://www.szerafingomba.hu/softwares/"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\mm5dread.exe"
@@ -29,7 +29,7 @@
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_RUN "$INSTDIR\mm5dread.exe"
-!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\documents\README"
+!define MUI_FINISHPAGE_SHOWreadme.txt "$INSTDIR\documents\readme.txt"
 !insertmacro MUI_PAGE_FINISH
 
 ; Uninstaller pages
@@ -43,13 +43,13 @@
 !insertmacro MUI_LANGUAGE "Hungarian"
 
 ; License Language
-LicenseLangString MUILicense ${LANG_ENGLISH} "mm5dread\LICENCE"
-LicenseLangString MUILicense ${LANG_HUNGARIAN} "mm5dread\LICENCE"
+LicenseLangString MUILicense ${LANG_ENGLISH} "mm5dread\licence.txt"
+LicenseLangString MUILicense ${LANG_HUNGARIAN} "mm5dread\licence.txt"
 
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "mm5dread-0.1-win32.exe"
+OutFile "mm5dread-0.2-win32.exe"
 InstallDir "$PROGRAMFILES\MM5DRead"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
@@ -62,13 +62,15 @@ FunctionEnd
 Section "Main files" SEC01
   SetOutPath "$INSTDIR\documents"
   SetOverwrite try
-  File "mm5dread\documents\authors"
-  File "mm5dread\documents\install"
-  File "mm5dread\documents\readme"
-  File "mm5dread\documents\version"
+  File "mm5dread\documents\authors.txt"
+  File "mm5dread\documents\install.txt"
+  File "mm5dread\documents\readme.txt"
+  File "mm5dread\documents\version.txt"
+  File "mm5dread\documents\copyright.txt"
+  File "mm5dread\documents\changelog.txt"
   SetOutPath "$INSTDIR"
   File "mm5dread\mm5dread.exe"
-  File "mm5dread\licence"
+  File "mm5dread\licence.txt"
   File "mm5dread\readme.md"
   CreateShortCut "$DESKTOP\MM5DRead.lnk" "$INSTDIR\mm5dread.exe"
   CreateDirectory "$SMPROGRAMS\MM5DRead"
@@ -118,15 +120,17 @@ SectionEnd
 Section Uninstall
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\readme.md"
-  Delete "$INSTDIR\licence"
+  Delete "$INSTDIR\licence.txt"
   Delete "$INSTDIR\mm5dread.exe"
   Delete "$INSTDIR\languages\mm5dread.pot"
   Delete "$INSTDIR\languages\hu\mm5dread.po"
   Delete "$INSTDIR\languages\hu\mm5dread.mo"
-  Delete "$INSTDIR\documents\authors"
-  Delete "$INSTDIR\documents\install"
-  Delete "$INSTDIR\documents\readme"
-  Delete "$INSTDIR\documents\version"
+  Delete "$INSTDIR\documents\copyright.txt"
+  Delete "$INSTDIR\documents\changelog.txt"
+  Delete "$INSTDIR\documents\authors.txt"
+  Delete "$INSTDIR\documents\install.txt"
+  Delete "$INSTDIR\documents\readme.txt"
+  Delete "$INSTDIR\documents\version.txt"
 
   Delete "$SMPROGRAMS\MM5DRead\Uninstall.lnk"
   Delete "$DESKTOP\MM5DRead.lnk"
