@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | MM5DRead v0.2 * Status reader program for MM5D device                    | }
-{ | Copyright (C) 2020-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
+{ | MM5DRead v0.3 * Status reader program for MM5D device                    | }
+{ | Copyright (C) 2020-2023 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | frmmain.pas                                                              | }
 { | Main form                                                                | }
 { +--------------------------------------------------------------------------+ }
@@ -31,6 +31,9 @@ type
     Bevel13: TBevel;
     Bevel14: TBevel;
     Bevel15: TBevel;
+    Bevel16: TBevel;
+    Bevel17: TBevel;
+    Bevel18: TBevel;
     Bevel2: TBevel;
     Bevel3: TBevel;
     Bevel4: TBevel;
@@ -44,6 +47,7 @@ type
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
@@ -66,6 +70,9 @@ type
     Shape12: TShape;
     Shape13: TShape;
     Shape14: TShape;
+    Shape15: TShape;
+    Shape16: TShape;
+    Shape17: TShape;
     Shape2: TShape;
     Shape3: TShape;
     Shape4: TShape;
@@ -99,6 +106,8 @@ resourcestring
   MESSAGE01 = 'Cannot read configuration file!';
   MESSAGE02 = 'Cannot write configuration file!';
   MESSAGE03 = 'Cannot read data from this URL!';
+  MESSAGE04 = 'Hyphae';
+  MESSAGE05 = 'Mushroom';
 
 implementation
 
@@ -132,24 +141,36 @@ begin
     Label3.Caption := '0 °C';
     Label4.Caption := '0 %';
     // LEDs
+    // - green
     ledoff := clGreen;
     Shape3.Brush.Color := ledoff;
     Shape4.Brush.Color := ledoff;
     Shape5.Brush.Color := ledoff;
     Shape6.Brush.Color := ledoff;
+    Shape15.Brush.Color := ledoff;
+    // - red
     ledoff := clMaroon;
     Shape7.Brush.Color := ledoff;
     Shape8.Brush.Color := ledoff;
     Shape9.Brush.Color := ledoff;
     Shape10.Brush.Color := ledoff;
+    Shape16.Brush.Color := ledoff;
+    // - yellow
     ledoff := clOlive;
     Shape11.Brush.Color := ledoff;
     Shape12.Brush.Color := ledoff;
     Shape13.Brush.Color := ledoff;
     Shape14.Brush.Color := ledoff;
+    Shape17.Brush.Color := ledoff;
+    // - labels
+    Label13.Font.Color := clBlack;
+    Label14.Font.Color := clBlack;
+    Label15.Font.Color := clBlack;
+    Label16.Font.Color := clBlack;
     // status bar
     StatusBar1.Panels.Items[0].Text := '';
     StatusBar1.Panels.Items[1].Text := '';
+    StatusBar1.Panels.Items[2].Text := '';
     Form1.Caption := APPNAME + ' v' + VERSION;
     ShowMessage(MESSAGE03);
   end
@@ -167,63 +188,107 @@ begin
     else
       Label4.Caption := '0 %';
     // LEDs
+    // - green
     ledoff := clGreen;
     ledon := clLime;
-    if value3.Strings[4] = '1' then
+    if value3.Strings[5] = '1' then
       Shape3.Brush.Color := ledon
     else
       Shape3.Brush.Color := ledoff;
-    if value3.Strings[5] = '1' then
+    if value3.Strings[6] = '1' then
       Shape4.Brush.Color := ledon
     else
       Shape4.Brush.Color := ledoff;
-    if value3.Strings[6] = '1' then
+    if value3.Strings[7] = '1' then
       Shape5.Brush.Color := ledon
     else
       Shape5.Brush.Color := ledoff;
-    if value3.Strings[7] = '1' then
+    if value3.Strings[8] = '1' then
       Shape6.Brush.Color := ledon
     else
       Shape6.Brush.Color := ledoff;
+    if value3.Strings[17] = '1' then
+      Shape17.Brush.Color := ledon
+    else
+      Shape17.Brush.Color := ledoff;
+    // - red
     ledoff := clMaroon;
     ledon := clred;
-    if value3.Strings[12] = '1' then
+    if value3.Strings[13] = '1' then
       Shape7.Brush.Color := ledon
     else
       Shape7.Brush.Color := ledoff;
-    if value3.Strings[13] = '1' then
+    if value3.Strings[14] = '1' then
       Shape8.Brush.Color := ledon
     else
       Shape8.Brush.Color := ledoff;
-    if value3.Strings[14] = '1' then
+    if value3.Strings[15] = '1' then
       Shape9.Brush.Color := ledon
     else
       Shape9.Brush.Color := ledoff;
-    if value3.Strings[15] = '1' then
+    if value3.Strings[16] = '1' then
       Shape10.Brush.Color := ledon
     else
       Shape10.Brush.Color := ledoff;
+    if value3.Strings[19] = '1' then
+      Shape15.Brush.Color := ledon
+    else
+      Shape15.Brush.Color := ledoff;
+    // - yellow
     ledoff := clOlive;
     ledon := clYellow;
-    if value3.Strings[8] = '1' then
+    if value3.Strings[9] = '1' then
       Shape11.Brush.Color := ledon
     else
       Shape11.Brush.Color := ledoff;
-    if value3.Strings[9] = '1' then
+    if value3.Strings[10] = '1' then
       Shape12.Brush.Color := ledon
     else
       Shape12.Brush.Color := ledoff;
-    if value3.Strings[10] = '1' then
+    if value3.Strings[11] = '1' then
       Shape13.Brush.Color := ledon
     else
       Shape13.Brush.Color := ledoff;
-    if value3.Strings[11] = '1' then
+    if value3.Strings[12] = '1' then
       Shape14.Brush.Color := ledon
     else
       Shape14.Brush.Color := ledoff;
+    if value3.Strings[18] = '1' then
+      Shape16.Brush.Color := ledon
+    else
+      Shape16.Brush.Color := ledoff;
+    // - labels
+    if value4.Strings[0] = 'off' then
+      Label13.Font.Color := clRed;
+    if value4.Strings[0] = 'on' then
+      Label13.Font.Color := clGreen;
+    if value4.Strings[0] = 'neutral' then
+      Label13.Font.Color := clBlack;
+    if value4.Strings[1] = 'off' then
+      Label14.Font.Color := clRed;
+    if value4.Strings[1] = 'on' then
+      Label14.Font.Color := clGreen;
+    if value4.Strings[1] = 'neutral' then
+      Label14.Font.Color := clBlack;
+    if value4.Strings[2] = 'off' then
+      Label15.Font.Color := clRed;
+    if value4.Strings[2] = 'on' then
+      Label15.Font.Color := clGreen;
+    if value4.Strings[2] = 'neutral' then
+      Label15.Font.Color := clBlack;
+    if value4.Strings[3] = 'off' then
+      Label16.Font.Color := clRed;
+    if value4.Strings[3] = 'on' then
+      Label16.Font.Color := clGreen;
+    if value4.Strings[3] = 'neutral' then
+      Label16.Font.Color := clBlack;
     // status bar
     StatusBar1.Panels.Items[0].Text := value0.Strings[0] + ' ' + value0.Strings[1];
     StatusBar1.Panels.Items[1].Text := value3.Strings[0] + ' ' + value3.Strings[1];
+    if value3.Strings[4] = 'H' then
+      StatusBar1.Panels.Items[2].Text := MESSAGE04
+    else
+      StatusBar1.Panels.Items[2].Text := MESSAGE05;
     Form1.Caption := APPNAME + ' v' + VERSION + ' | ' + value1.Strings[3];
   end;
 end;
@@ -302,6 +367,7 @@ begin
   untcommonproc.value1 := TStringList.Create;
   untcommonproc.value2 := TStringList.Create;
   untcommonproc.value3 := TStringList.Create;
+  untcommonproc.value4 := TStringList.Create;
 end;
 
 procedure TForm1.FormResize(Sender: TObject);
@@ -326,6 +392,7 @@ begin
   untcommonproc.value1.Free;
   untcommonproc.value2.Free;
   untcommonproc.value3.Free;
+  untcommonproc.value4.Free;
 end;
 
 end.

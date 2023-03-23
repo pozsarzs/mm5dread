@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
-{ | MM5DRead v0.2 * Status reader program for MM5D device                    | }
-{ | Copyright (C) 2020-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
+{ | MM5DRead v0.3 * Status reader program for MM5D device                    | }
+{ | Copyright (C) 2020-2023 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>     | }
 { | untcommonproc.pas                                                        | }
 { | Common functions and procedures                                          | }
 { +--------------------------------------------------------------------------+ }
@@ -21,7 +21,7 @@ uses
   Classes, Dialogs, INIFiles, SysUtils, {$IFDEF WIN32}Windows,{$ENDIF} httpsend;
 
 var
-  value0, value1, value2, value3: TStringList;
+  value0, value1, value2, value3, value4: TStringList;
   exepath: shortstring;
   lang: string[2];
   uids: string;
@@ -57,21 +57,28 @@ implementation
 
 // get data from controller device via http
 function getdatafromdevice(url, uid: string): boolean;
+const
+  s1='/cgi-bin/getdata.cgi?uid=';
+  s2='&value=';
 begin
   Result := True;
   value0.Clear;
   value1.Clear;
   value2.Clear;
   value3.Clear;
+  value4.Clear;
+  url:=url+s1+uid+s2;
   with THTTPSend.Create do
   begin
-    if not HttpGetText(url + '/cgi-bin/getdata.cgi?uid=' + uid + '&value=0', value0) then
+    if not HttpGetText(url + '0', value0) then
       Result := False;
-    if not HttpGetText(url + '/cgi-bin/getdata.cgi?uid=' + uid + '&value=1', value1) then
+    if not HttpGetText(url + '1', value1) then
       Result := False;
-    if not HttpGetText(url + '/cgi-bin/getdata.cgi?uid=' + uid + '&value=2', value2) then
+    if not HttpGetText(url + '2', value2) then
       Result := False;
-    if not HttpGetText(url + '/cgi-bin/getdata.cgi?uid=' + uid + '&value=3', value3) then
+    if not HttpGetText(url + '3', value3) then
+      Result := False;
+    if not HttpGetText(url + '4', value4) then
       Result := False;
     Free;
   end;
