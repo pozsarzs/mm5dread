@@ -1,12 +1,12 @@
 Installation instruction for source and binary tar.gz package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Linux
-~~~~~~~~
+Linux
+-----
 a. From source package
 
    Build and install:
-   $ tar -xzf mm5dread-0.2.tar.gz
+   $ tar -xzf mm5dread-0.3.tar.gz
    $ ./configure
    $ make
    # make install
@@ -17,11 +17,11 @@ a. From source package
 b. From binary package
 
    Install:
-   # tar -xzf mm5dread-0.2-i586.tar.gz
+   # tar -xzf mm5dread-0.3-i586.tar.gz
    # cd mm5dread
    # ./create_links
             or
-   # tar -xzf mm5dread-0.2-i586.tar.gz
+   # tar -xzf mm5dread-0.3-i586.tar.gz
    # cd mm5dread
    # ./install
 
@@ -33,21 +33,21 @@ b. From binary package
             or
    # /opt/mm5dread/uninstall
 
-2. Windows
-~~~~~~~~~~
+Windows
+-------
 a. From source package
 
    Build and install:
-   > tar -xzf mm5dread-0.2.tar.gz
+   > tar -xzf mm5dread-0.3.tar.gz
    > build.bat
    > build.bat install
 
    Remove:
    > build.bat uninstall
 
-c. From binary package
+b. From binary package
 
-   > unzip mm5dread-0.2-win32.zip
+   > unzip mm5dread-0.3-win32.zip
 
 ---------------------------------------------------------------------------------
- MM5DRead * Copyright (C) 2020-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>
+ MM5DRead * Copyright (C) 2020-2023 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>

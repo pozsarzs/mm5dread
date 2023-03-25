@@ -979,10 +979,11 @@ object Form1: TForm1
     BorderSpacing.Left = 4
     BorderSpacing.Top = 4
     BorderSpacing.Right = 4
+    EchoMode = emPassword
     ParentShowHint = False
+    PasswordChar = '*'
     ShowHint = True
     TabOrder = 1
-    Text = '00000000'
   end
   object GroupBox4: TGroupBox
     AnchorSideTop.Control = GroupBox3

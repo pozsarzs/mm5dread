@@ -36,11 +36,7 @@ const
     ('-v', '--version', 'show version and build information')
     );
 
-{$IFDEF FHS}
-  {$I config.pas}
-{$ELSE}
-  {$I config.pas.in}
-{$ENDIF}
+{$I config.pas}
 
 {$R *.res}
 

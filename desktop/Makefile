@@ -1,6 +1,6 @@
 # +----------------------------------------------------------------------------+
-# | MM5DRead v0.2 * Status reader program for MM5D device                      |
-# | Copyright (C) 2020-2022 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>       |
+# | MM5DRead v0.3 * Status reader program for MM5D device                      |
+# | Copyright (C) 2020-2023 Pozsár Zsolt <pozsar.zsolt@szerafingomba.hu>       |
 # | Makefile                                                                   |
 # | Makefile for desktop files                                                 |
 # +----------------------------------------------------------------------------+

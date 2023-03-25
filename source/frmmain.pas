@@ -108,6 +108,8 @@ resourcestring
   MESSAGE03 = 'Cannot read data from this URL!';
   MESSAGE04 = 'Hyphae';
   MESSAGE05 = 'Mushroom';
+  MESSAGE06 = 'The number of received data is wrong!';
+  MESSAGE07 = 'Use v0.6 or higher software on the controller!';
 
 implementation
 
@@ -118,64 +120,22 @@ implementation
 procedure TForm1.SpeedButton1Click(Sender: TObject);
 var
   format: TFormatSettings;
-  good: boolean;
+  errorcode: byte;
   ledoff, ledon: TColor;
   t, rh: single;
 begin
-  good := getdatafromdevice(ComboBox1.Text, Edit1.Text);
-  if good then
+  errorcode := getdatafromdevice(ComboBox1.Text, Edit1.Text);
+  if errorcode = 0 then
     if (value0.Count < 2) or (value1.Count < 4) or (value2.Count < 12) or
-      (value3.Count < 16) then
-      good := False
+      (value3.Count < 20) or (value4.Count < 4) then
+      errorcode := 2
     else
-      good := True;
-  if good then
+      errorcode := 0;
+  if errorcode = 0 then
   begin
     format.DecimalSeparator := '.';
     trystrtofloat(value3.Strings[2], t, format);
     trystrtofloat(value3.Strings[3], rh, format);
-  end;
-  if not good then
-  begin
-    // displays
-    Label3.Caption := '0 °C';
-    Label4.Caption := '0 %';
-    // LEDs
-    // - green
-    ledoff := clGreen;
-    Shape3.Brush.Color := ledoff;
-    Shape4.Brush.Color := ledoff;
-    Shape5.Brush.Color := ledoff;
-    Shape6.Brush.Color := ledoff;
-    Shape15.Brush.Color := ledoff;
-    // - red
-    ledoff := clMaroon;
-    Shape7.Brush.Color := ledoff;
-    Shape8.Brush.Color := ledoff;
-    Shape9.Brush.Color := ledoff;
-    Shape10.Brush.Color := ledoff;
-    Shape16.Brush.Color := ledoff;
-    // - yellow
-    ledoff := clOlive;
-    Shape11.Brush.Color := ledoff;
-    Shape12.Brush.Color := ledoff;
-    Shape13.Brush.Color := ledoff;
-    Shape14.Brush.Color := ledoff;
-    Shape17.Brush.Color := ledoff;
-    // - labels
-    Label13.Font.Color := clBlack;
-    Label14.Font.Color := clBlack;
-    Label15.Font.Color := clBlack;
-    Label16.Font.Color := clBlack;
-    // status bar
-    StatusBar1.Panels.Items[0].Text := '';
-    StatusBar1.Panels.Items[1].Text := '';
-    StatusBar1.Panels.Items[2].Text := '';
-    Form1.Caption := APPNAME + ' v' + VERSION;
-    ShowMessage(MESSAGE03);
-  end
-  else
-  begin
     // displays
     t := round(t);
     if (t >= 0) and (t < 100) then
@@ -290,6 +250,48 @@ begin
     else
       StatusBar1.Panels.Items[2].Text := MESSAGE05;
     Form1.Caption := APPNAME + ' v' + VERSION + ' | ' + value1.Strings[3];
+  end
+  else
+  begin
+    // displays
+    Label3.Caption := '0 °C';
+    Label4.Caption := '0 %';
+    // LEDs
+    // - green
+    ledoff := clGreen;
+    Shape3.Brush.Color := ledoff;
+    Shape4.Brush.Color := ledoff;
+    Shape5.Brush.Color := ledoff;
+    Shape6.Brush.Color := ledoff;
+    Shape15.Brush.Color := ledoff;
+    // - red
+    ledoff := clMaroon;
+    Shape7.Brush.Color := ledoff;
+    Shape8.Brush.Color := ledoff;
+    Shape9.Brush.Color := ledoff;
+    Shape10.Brush.Color := ledoff;
+    Shape16.Brush.Color := ledoff;
+    // - yellow
+    ledoff := clOlive;
+    Shape11.Brush.Color := ledoff;
+    Shape12.Brush.Color := ledoff;
+    Shape13.Brush.Color := ledoff;
+    Shape14.Brush.Color := ledoff;
+    Shape17.Brush.Color := ledoff;
+    // - labels
+    Label13.Font.Color := clBlack;
+    Label14.Font.Color := clBlack;
+    Label15.Font.Color := clBlack;
+    Label16.Font.Color := clBlack;
+    // status bar
+    StatusBar1.Panels.Items[0].Text := '';
+    StatusBar1.Panels.Items[1].Text := '';
+    StatusBar1.Panels.Items[2].Text := '';
+    Form1.Caption := APPNAME + ' v' + VERSION;
+    case errorcode of
+      1: ShowMessage(MESSAGE03);
+      2: ShowMessage(MESSAGE06 + #10 + MESSAGE07);
+    end;
   end;
 end;
 
