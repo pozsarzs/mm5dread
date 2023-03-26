@@ -1,10 +1,10 @@
-9646319887058092580128f8c0cdfe1f  usr/bin/mm5dread
+fbb030448a8e2780eeab7d58bd9e1f14  usr/bin/mm5dread
 5f29e9e71c009e35105c0e31aa6c9658  usr/share/applications/mm5dread.desktop
 4994f4cacf022e01ffda29f5627f7ab5  usr/share/doc/mm5dread/AUTHORS
-108c6bf2c2f53ef0ca9b508b5002a0ef  usr/share/doc/mm5dread/changelog.gz
-40a29a5ec427fc848370a7b2ee2f3aaf  usr/share/doc/mm5dread/copyright
-c5faefadeade507c2aeed1c42e2e10f1  usr/share/doc/mm5dread/README
-41cf1884673a8ad6f57cff3abca53ee2  usr/share/doc/mm5dread/VERSION
-7229c19d3bcf87d3a50e4bc16ceca215  usr/share/locale/hu/LC_MESSAGES/mm5dread.mo
-011828075ddfa67455226dacc087386d  usr/share/man/man1/mm5dread.1.gz
+28ae9c84965528b44076e2cb7089d137  usr/share/doc/mm5dread/changelog.gz
+7e738df002f3097ef56bc5d5de76c7ac  usr/share/doc/mm5dread/copyright
+ee68a684871f8bb2026fe2426108febb  usr/share/doc/mm5dread/README
+f4b5992df2bbde4ae95c396ed9be98e3  usr/share/doc/mm5dread/VERSION
+24c33bd4d4a133848209d2c57e50ea26  usr/share/locale/hu/LC_MESSAGES/mm5dread.mo
+77c23884a62ea2bc5985839b7ccb5b74  usr/share/man/man1/mm5dread.1.gz
 103da7d9d3ed00f1433816a8405ca64e  usr/share/pixmaps/mm5dread.xpm
